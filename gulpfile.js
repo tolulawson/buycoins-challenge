@@ -14,8 +14,13 @@ function promisifyStream(stream) {
   return new Promise((resolve) => stream.on('end', resolve));
 }
 
+gulp.task('copy', function() {
+  return gulp.src('src/favicon.ico')
+      .pipe(gulp.dest('dist'));
+})
+
 gulp.task('browserify', function() {
-  return browserify('src/js/app.js')
+  return browserify('src/js/app.js', {sourceType: module})
     .bundle()
     //Pass desired output filename to vinyl-source-stream
     .pipe(source('bundle.js'))
@@ -26,16 +31,21 @@ gulp.task('browserify', function() {
 gulp.task('sass', async function() {
   await promisifyStream(
     gulp.src('src/scss/*.scss')
-        .pipe(sass({ouputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass(
+          {
+            ouputStyle: 'compressed',
+          }).on('error', sass.logError))
         .pipe(gulp.dest('src/css'))
   )
 });
 
 gulp.task('start-sass', function() {
   return gulp.src('src/scss/*.scss')
-        .pipe(sass({ouputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({
+          ouputStyle: 'compressed',
+      }).on('error', sass.logError))
         .pipe(gulp.dest('src/css'))
-        // .pipe(browsersync.stream())
+        .pipe(browsersync.stream())
 });
 
 gulp.task('cleancss', async function() {
@@ -59,9 +69,7 @@ gulp.task('babel', async function() {
     gulp.src('src/js/bundle.js')
       .pipe(babel({
           presets: [
-          ['@babel/env', {
-            modules: false
-          }]
+            "es2015"
         ]
       }))
       .pipe(gulp.dest('dist/js'))
@@ -92,7 +100,12 @@ gulp.task('image', async function () {
     .pipe(image())
     .pipe(gulp.dest('dist/img'))
   )
-})
+});
+
+gulp.task('reload', function (done) {
+    browsersync.reload();
+    done();
+});
 
 // gulp.task('tests', async function() {
 //     gulp
@@ -108,10 +121,11 @@ gulp.task('start', async function() {
         baseDir : "src"
       }
   });
-  gulp.watch('src/scss/*.scss', {ignoreInitial: false}, gulp.series('start-sass', 'browserify')).on('change', browsersync.reload);
-  gulp.watch(['src/*.html', 'src/js/*.js']).on('change', browsersync.reload);
+  gulp.watch('src/scss/*.scss', {ignoreInitial: false}, gulp.series('start-sass'));
+
+  gulp.watch(['src/*.html', 'src/js/*.js', '!src/js/bundle.js'], {ignoreInitial: false},  gulp.series('browserify', 'reload'));
 })
 
 gulp.task('build', async function() {
-  (gulp.series('sass', 'autoprefixer', 'cleancss', 'browserify', 'babel', 'uglify', 'htmlmin', 'image'))();
+  (gulp.series('sass', 'autoprefixer', 'cleancss', 'babel', 'browserify', 'uglify', 'htmlmin', 'image', 'copy'))();
 });
