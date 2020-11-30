@@ -69,7 +69,9 @@ gulp.task('babel', async function() {
     gulp.src('src/js/bundle.js')
       .pipe(babel({
           presets: [
-            "es2015"
+          ['@babel/env', {
+            modules: false
+          }]
         ]
       }))
       .pipe(gulp.dest('dist/js'))
