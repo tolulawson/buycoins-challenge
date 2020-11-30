@@ -73,7 +73,7 @@ const model = {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN || GITHUB_TOKEN}`,
+          Authorization: `Bearer ${!process.env.GITHUB_TOKEN ? GITHUB_TOKEN : process.env.GITHUB_TOKEN}`,
         },
         body: JSON.stringify({ query }),
       })
