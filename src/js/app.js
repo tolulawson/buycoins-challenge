@@ -1,8 +1,6 @@
-require('dotenv').config();
-
 const { GITHUB_TOKEN } = require('./api');
 
-console.log(process.env);
+console.log(GITHUB_TOKEN);
 
 const model = {
   data: null,
