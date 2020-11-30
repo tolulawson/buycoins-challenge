@@ -7,7 +7,6 @@ const htmlmin = require('gulp-htmlmin');
 const image = require('gulp-image');
 const browsersync = require('browser-sync').create();
 const cleancss = require('gulp-clean-css');
-const jasmineBrowser = require('gulp-jasmine-browser');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 
@@ -95,12 +94,12 @@ gulp.task('image', async function () {
   )
 })
 
-gulp.task('tests', async function() {
-    gulp
-        .src('src/js/app.js')
-        .pipe(jasmineBrowser.specRunner())
-        .pipe(jasmineBrowser.server({ port: 3001 }));
-});
+// gulp.task('tests', async function() {
+//     gulp
+//         .src('src/js/app.js')
+//         .pipe(jasmineBrowser.specRunner())
+//         .pipe(jasmineBrowser.server({ port: 3001 }));
+// });
 
 gulp.task('start', async function() {
   // (gulp.series('browsersync'))();
