@@ -80,7 +80,7 @@ const model = {
         .then((r) => r.json())
         .then((data) => {
           this.data = data.data;
-          console.log(model.getRepos());
+          console.log(model.getRepos()); 
           resolve();
         });
     });
