@@ -1,6 +1,4 @@
-const { GITHUB_TOKEN } = require('./api');
-
-console.log(GITHUB_TOKEN);
+const GITHUB_TOKEN = 'fa73d1f11222b6fa435db925af436d903920a796';
 
 const model = {
   data: null,
@@ -73,14 +71,14 @@ const model = {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: `Bearer ${!process.env.GITHUB_TOKEN ? GITHUB_TOKEN : process.env.GITHUB_TOKEN}`,
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
         body: JSON.stringify({ query }),
       })
         .then((r) => r.json())
         .then((data) => {
           this.data = data.data;
-          console.log(model.getRepos()); 
+          console.log(model.getRepos());
           resolve();
         });
     });
