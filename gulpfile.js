@@ -78,6 +78,20 @@ gulp.task('babel', async function() {
   )
 })
 
+gulp.task('build-babel', async function() {
+  await promisifyStream(
+    gulp.src('src/js/app.js')
+      .pipe(babel({
+          presets: [
+          ['@babel/env', {
+            modules: false
+          }]
+        ]
+      }))
+      .pipe(gulp.dest('dist/js'))
+  )
+})
+
 gulp.task('uglify', async function() {
   await promisifyStream(
     gulp.src('dist/js/*.js', {base: './'})
@@ -129,5 +143,5 @@ gulp.task('start', async function() {
 })
 
 gulp.task('build', async function() {
-  (gulp.series('sass', 'autoprefixer', 'cleancss', 'babel', 'browserify', 'uglify', 'htmlmin', 'image', 'copy'))();
+  (gulp.series('sass', 'autoprefixer', 'cleancss', 'build-babel', 'browserify', 'uglify', 'htmlmin', 'image', 'copy'))();
 });

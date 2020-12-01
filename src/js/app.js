@@ -1,7 +1,3 @@
-const { GITHUB_TOKEN } = require('./api');
-
-console.log(GITHUB_TOKEN);
-
 const model = {
   data: null,
   root: document.getElementById('root'),
