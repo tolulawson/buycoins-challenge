@@ -4,3 +4,6 @@ dist/
 css/
 .env
 src/js/api.js
+
+# Local Netlify folder
+.netlify

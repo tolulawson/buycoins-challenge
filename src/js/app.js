@@ -1,3 +1,5 @@
+const { GITHUB_TOKEN } = require('./api');
+
 const model = {
   data: null,
   root: document.getElementById('root'),
@@ -69,7 +71,7 @@ const model = {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
         },
         body: JSON.stringify({ query }),
       })
