@@ -1,4 +1,6 @@
-const GITHUB_TOKEN = 'fa73d1f11222b6fa435db925af436d903920a796';
+const { GITHUB_TOKEN } = require('./api');
+
+console.log(GITHUB_TOKEN);
 
 const model = {
   data: null,
@@ -41,7 +43,7 @@ const model = {
           emoji
           emojiHTML
         }
-        repositories(orderBy: {field: CREATED_AT, direction: DESC}, first: 10) {
+        repositories(orderBy: {field: CREATED_AT, direction: DESC}, first: 20) {
           edges {
             node {
               name
@@ -71,7 +73,7 @@ const model = {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization: `Bearer ${GITHUB_TOKEN}`,
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         },
         body: JSON.stringify({ query }),
       })
@@ -108,6 +110,13 @@ const reposView = {
       const singleRepo = document.createElement('div');
       singleRepo.innerHTML = `
         <div>${repo.name}</div>
+        <div>
+          <span class='language' style='background-color:  ${repo.languages.edges[0].node.color};'></span>
+          <span>${repo.languages.edges[0].node.name}</span>
+          <span>${repo.stargazerCount}</span>
+          <span>${repo.forks.totalCount}</span>
+          <span>Updated at ${new Date(repo.updatedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}</span>
+        </div>
       `;
       this.element.append(singleRepo);
     });
