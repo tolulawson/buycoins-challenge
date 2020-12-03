@@ -390,11 +390,16 @@ main {
               text-decoration: none;
               font-weight: 600;
               font-size: 20px;
+              line-height: 1.5;
 
               &:hover {
                 text-decoration: underline;
               }
             }
+          }
+
+          .description {
+            padding-right: 24px;
           }
         }
       }
