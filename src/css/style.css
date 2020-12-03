@@ -1,6 +1,5 @@
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -21,3 +20,86 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline; }
+
+:root {
+  --header-icons-color: #fff;
+  --header-bg: #24292e;
+  --header-text-color: rgba(255, 255, 255, 0.7); }
+
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji; }
+
+.header {
+  background: var(--header-bg);
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--header-text-color);
+  flex-wrap: nowrap;
+  justify-content: space-between; }
+  .header svg {
+    fill: var(--header-icons-color); }
+  .header .logo-search-nav {
+    display: flex;
+    align-items: center; }
+    .header .logo-search-nav .logo {
+      margin-right: 16px; }
+    .header .logo-search-nav .search-nav {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center; }
+      .header .logo-search-nav .search-nav label {
+        min-height: 28px;
+        width: 100%;
+        max-width: 100%;
+        font-weight: 400;
+        border: 1px solid #444d56;
+        box-shadow: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 6px;
+        color: #fff;
+        margin-right: 16px; }
+        .header .logo-search-nav .search-nav label input {
+          min-height: 28px;
+          outline: none;
+          display: table-cell;
+          width: 100%;
+          padding-top: 0;
+          padding-bottom: 0;
+          font-size: inherit;
+          color: inherit;
+          background: none;
+          border: 0;
+          box-shadow: none;
+          line-height: 20px;
+          padding: 5px 12px;
+          vertical-align: middle; }
+          .header .logo-search-nav .search-nav label input::placeholder {
+            color: #C8C9CA; }
+        .header .logo-search-nav .search-nav label img {
+          margin-right: 8px; }
+      .header .logo-search-nav .search-nav nav {
+        display: flex;
+        align-self: auto;
+        flex-direction: row;
+        color: #fff; }
+        .header .logo-search-nav .search-nav nav a {
+          color: inherit;
+          text-decoration: none;
+          font-weight: 600;
+          font-family: inherit;
+          white-space: nowrap;
+          margin-right: 16px; }
+
+.tools-row {
+  display: flex;
+  flex-wrap: nowrap; }
+
+@media (min-width: 1012px) {
+  .header {
+    padding-right: 32px;
+    padding-left: 32px; } }
