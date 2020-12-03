@@ -384,6 +384,7 @@ main {
           flex-direction: column;
 
           .repo-name {
+            margin-bottom: 4px;
 
             a {
               color: #0366d6;
@@ -400,6 +401,46 @@ main {
 
           .description {
             padding-right: 24px;
+            margin-bottom: 8px;
+            color: #586069;
+            width: 75%;
+            font-size: 14px;
+            display: inline-block
+          }
+
+          .meta {
+            margin-right: 16px;
+            font-size: 12px;
+            color: #586069;
+            margin-top: 8px;
+
+            .meta-item {
+              &:not(:last-child) {
+                margin-right: 16px;
+              }
+
+              svg {
+                fill: #586069;
+                vertical-align: text-bottom;
+              }
+
+              &.language {
+
+                .language-color {
+                  position: relative;
+                  top: 1px;
+                  display: inline-block;
+                  width: 12px;
+                  height: 12px;
+                  border: 1px solid rgba(27, 31, 35, 0.1);
+                  border-radius: 50%;
+                  margin-right: 0;
+                }
+
+                .language-text {
+                }
+              }
+            }
           }
         }
       }

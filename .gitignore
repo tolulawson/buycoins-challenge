@@ -1,5 +1,6 @@
 node_modules/
 src/js/bundle.js
+src/css
 dist/
 css/
 .env
