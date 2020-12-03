@@ -96,6 +96,7 @@ const userView = {
       <div class='bio'>${userData.bio}</div>
     `;
     model.root.append(this.element);
+    document.getElementById('status-image').src = userData.avatarUrl;
   },
 };
 
@@ -134,3 +135,14 @@ const controller = {
 window.addEventListener('load', () => {
   controller.init();
 });
+
+const observer = new IntersectionObserver((entries) => {
+  // no intersection
+  if (entries[0].intersectionRatio === 0) {
+    document.querySelector('#tab-nav').classList.add('sticky');
+  } else if (entries[0].intersectionRatio === 1) document.querySelector('#tab-nav').classList.remove('sticky');
+}, {
+  threshold: [0, 1],
+});
+
+observer.observe(document.querySelector('#tab-nav-top'));
