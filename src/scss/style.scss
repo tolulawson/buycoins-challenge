@@ -179,6 +179,8 @@ body {
 }
 
 main {
+  position: relative;
+  z-index: 0;
   .tab-nav {
     margin-top: 24px;
     display: block;
@@ -186,6 +188,7 @@ main {
     top: 0;
     background-color: #fff;
     border-bottom: 1px solid #eaecef;
+    z-index: 3;
 
     &.sticky {
       .nav-container {
@@ -242,6 +245,25 @@ main {
           border: 0;
           border-bottom: 2px solid transparent;
           text-decoration: none;
+          transition: .12s ease-out;
+
+          .counter {
+            display: inline-block;
+            min-width: 20px;
+            padding: 0 6px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+            color: var(--color-counter-text);
+            text-align: center;
+            background-color: rgba(209, 213, 218, 0.5);
+            border: 1px solid transparent;
+            border-radius: 2em;
+          }
+
+          &:hover {
+            border-bottom-color: #d1d5da;
+          }
 
           &.selected {
             font-weight: 600;
@@ -255,6 +277,124 @@ main {
             margin-right: 4px;
             fill: #959da5;
             vertical-align: text-bottom;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    padding-right: 32px;
+    padding-left: 32px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+
+    #user {
+      width: 25%;
+      padding-right: 16px;
+      padding-left: 16px;
+      margin-top: -32px;
+      // z-index: 1;
+
+      .avatar {
+        position: relative;
+        transition: opacity 0.2s;
+        z-index: 4;
+
+        &.sticky {
+          opacity: 0;
+        }
+
+        .avatar-img {
+          width: 100%;
+          height: auto;
+          border-radius: 100%;
+        }
+
+        .g-emoji {
+          font-size: 1.25em;
+          font-family: Apple Color Emoji,Segoe UI,Segoe UI Emoji,Segoe UI Symbol;
+          font-size: 1em;
+          font-style: normal!important;
+          font-weight: 400;
+          line-height: 1;
+          vertical-align: -.075em;
+          position: absolute;
+          bottom: 0;
+          left: 100%;
+          z-index: 2;
+          width: 38px;
+          height: 38px;
+          margin-bottom: 32px;
+          margin-left: -40px;
+          padding: 8px;
+          background-color: #fff;
+          border-radius: 100%;
+          border: 1px solid #e1e4e8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          box-shadow: 0 1px 0 rgba(27,31,35,0.04);
+        }
+      }
+
+      .user-info {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        transition: 0.2s;
+
+        &.sticky {
+          opacity: opacity 0;
+        }
+
+        .name {
+          font-size: 26px;
+          line-height: 1.25;
+          font-weight: 600;
+        }
+
+        .login {
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 24px;
+          color: #586069;
+        }
+      }
+
+      .bio {
+        font-size: 16px;
+      }
+    }
+
+    #repos {
+      .repos-search {
+
+      }
+
+      ul {
+        li {
+          list-style: none;
+          display: flex;
+          padding-top: 24px;
+          padding-bottom: 24px;
+          flex-direction: column;
+
+          .repo-name {
+
+            a {
+              color: #0366d6;
+              text-decoration: none;
+              font-weight: 600;
+              font-size: 20px;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
           }
         }
       }
