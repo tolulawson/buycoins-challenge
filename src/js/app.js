@@ -175,6 +175,7 @@ const reposView = {
     });
     this.root.append(this.element);
     document.querySelector('.counter').textContent = model.getRepoCount();
+    document.querySelector('.loader').classList.add('hidden');
   },
 };
 

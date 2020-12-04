@@ -196,6 +196,20 @@ body {
 main {
   position: relative;
   z-index: 0;
+
+  .loader {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
   .tab-nav {
     margin-top: 24px;
     display: block;
