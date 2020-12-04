@@ -98,16 +98,18 @@ const userView = {
   render() {
     const userData = model.getUser();
     this.element.innerHTML = `
-      <div class='avatar' id='avatar'>
-        <a href='#'>
-          <img src='${userData.avatarUrl}' alt='Profile picture' class='avatar-img' height=260 width=260/>
-        </a>
-        ${userData.emojiHTML}
-      </div>
-      <div id='user-top'></div>
-      <div class='user-info' id='user-info'>
-        <div class='name' id='name'>${userData.name}</div>
-        <div class='login' id='login'>${userData.login}</div>
+      <div class='avatar-name'>
+        <div class='avatar' id='avatar'>
+          <a href='#'>
+            <img src='${userData.avatarUrl}' alt='Profile picture' class='avatar-img' height=260 width=260/>
+          </a>
+          ${userData.emojiHTML}
+        </div>
+        <div id='user-top'></div>
+        <div class='user-info' id='user-info'>
+          <div class='name' id='name'>${userData.name}</div>
+          <div class='login' id='login'>${userData.login}</div>
+        </div>
       </div>
       <div class='bio'>${userData.bio}</div>
     `;
@@ -145,7 +147,7 @@ const reposView = {
         <h3 class='repo-name'>
           <a href='${repo.url}'>${repo.name}</a>
         <h3/>
-        <div class='description'>${repo.description}</div>
+        <div class='description' style='display: ${!repo.description ? 'none' : ''}'>${!repo.description ? '' : repo.description}</div>
 
         <div class='meta'>
           <span class='language meta-item'>
