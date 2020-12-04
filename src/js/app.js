@@ -191,3 +191,8 @@ const controller = {
 window.addEventListener('load', () => {
   controller.init();
 });
+
+document.querySelector('.mobile-menu').addEventListener('click', () => {
+  const headerClass = document.querySelector('.header').classList;
+  headerClass.contains('open') ? headerClass.remove('open') : headerClass.add('open');
+});

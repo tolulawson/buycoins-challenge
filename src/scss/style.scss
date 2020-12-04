@@ -66,6 +66,7 @@ body {
       text-decoration: none;
       appearance: none;
       border: 0;
+      outline: none;
     }
 
     .logo {
@@ -628,6 +629,39 @@ main {
         }
       }
     }
+
+    &.open {
+      margin-bottom: 250px;
+
+      .search-nav {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        top: 65px;
+        width: 100%;
+        background: var(--header-bg);
+        left: 0;
+        align-items: flex-start;
+        padding: 16px;
+
+        label {
+          max-width: 100%;
+          margin-bottom: 16px;
+        }
+
+        nav {
+          flex-direction: column;
+          width: 100%;
+
+          a {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 
   main {
@@ -690,7 +724,7 @@ main {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 570px) {
 
   .nav-container {
     svg {
